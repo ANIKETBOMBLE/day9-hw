@@ -36,7 +36,7 @@ function Quiz() {
   const handleAnswerClick = (answer, isCorrect) => {
     setSelectedAnswer(answer);
     setIsAnswered(true);
-    setCountdown(4);
+    setCountdown(5);
   };
 
   useEffect(() => {
@@ -61,15 +61,21 @@ function Quiz() {
     return () => clearTimeout(timer);
   }, [countdown]);
 
-  // if (!questions) return <div>Loading...</div>;
-
+  
+  if (!questions) return <div>
+  <div class="flex justify-center items-center">
+<div class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-solid"></div>
+</div>
+</div>;{
+  
+}
   const current = questions[index];
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-6">
   <div className="bg-white rounded-2xl shadow-lg p-6 w-full max-w-2xl">
     <h2 className="text-2xl font-semibold text-gray-800 mb-6">
-      {index + 1}. <span dangerouslySetInnerHTML={{ __html: current.question }} />
+      {index + 1}.{ current.question }
     </h2>
 
     <div className="space-y-4">
@@ -97,7 +103,7 @@ function Quiz() {
               }
             `}
           >
-            <span dangerouslySetInnerHTML={{ __html: answer }} />
+            {answer}
           </button>
         );
       })}
@@ -105,7 +111,7 @@ function Quiz() {
 
     {isAnswered && (
       <div className="mt-6 text-center text-gray-600 text-sm">
-        Next question in <span className="font-semibold">{countdown}</span>
+        Next question in <span className="font-semibold">{countdown}</span> 
       </div>
     )}
   </div>
