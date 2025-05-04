@@ -61,7 +61,7 @@ function Quiz() {
     return () => clearTimeout(timer);
   }, [countdown]);
 
-  if (!questions) return <div>Loading...</div>;
+  // if (!questions) return <div>Loading...</div>;
 
   const current = questions[index];
 
